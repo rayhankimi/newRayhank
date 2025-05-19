@@ -408,7 +408,7 @@
         <div class="flex-grow flex flex-col md:flex-row gap-12">
           <!-- Left Column - Giant Name -->
           <div class="md:w-1/2 flex items-center justify-center">
-            <h2 class="text-9xl md:text-[7rem] lg:text-[9rem] xl:text-[12rem] font-bold leading-none text-center md:text-left transition-colors duration-1000">
+            <h2 class="text-8xl md:text-[7rem] lg:text-[9rem] xl:text-[12rem] font-bold leading-none text-center md:text-left transition-colors duration-1000">
               RAYHAN<br>KIMI
             </h2>
           </div>
