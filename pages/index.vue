@@ -387,12 +387,11 @@
         <Marquee text="Let's Connect and Elaborate Together!" class="w-full"/>
       </section>
     </template>
-
     <!-- Section 5 - Mega Footer -->
     <section id="footer"
-             class="min-h-[80vh] border-t-4 border-black bg-neutral-900 text-white relative overflow-hidden transition-colors duration-1000">
+             class="min-h-[80vh] border-t-4 border-black bg-neutral-900 text-white relative overflow-hidden">
       <!-- Giant Marquee Banner -->
-      <div class="h-24 bg-black text-white flex items-center overflow-hidden transition-colors duration-1000">
+      <div class="marquee-fixed h-24 bg-black text-white flex items-center overflow-hidden">
         <div class="flex items-center animate-marquee whitespace-nowrap">
           <span class="text-5xl md:text-7xl font-bold mx-8">RAYHAN KIMI NABIEL ATHALLAH</span>
           <span class="text-5xl md:text-7xl font-bold mx-8">•</span>
@@ -405,7 +404,7 @@
       </div>
 
       <!-- Giant Footer Content -->
-      <div class="p-12 md:p-24 flex flex-col h-full transition-colors duration-1000">
+      <div class="footer-content p-12 md:p-24 flex flex-col h-full">
         <div class="flex-grow flex flex-col md:flex-row gap-12">
           <!-- Left Column - Giant Name -->
           <div class="md:w-1/2 flex items-center justify-center">
@@ -529,31 +528,47 @@ const handleKeydown = (e) => {
 onMounted(() => {
   document.addEventListener('click', handleOutsideClick);
   document.addEventListener('keydown', handleKeydown);
-  const footerSection = document.getElementById('footer')
-  if (!footerSection) return
+  // Delay sedikit untuk memastikan DOM siap
+  setTimeout(() => {
+    const footer = document.getElementById('footer')
+    if (!footer) return
 
-  // Fungsi toggle yang lebih reliable
-  const toggleColorMode = () => {
-    footerSection.classList.toggle('light-mode')
+    // Fungsi toggle yang dioptimasi untuk Safari
+    const toggleTheme = () => {
+      footer.classList.toggle('light-mode')
 
-    // Force repaint untuk Safari
-    const content = footerSection.querySelector('.footer-content')
-    if (content) {
-      content.style.display = 'none'
-      content.offsetHeight // Trigger reflow
-      content.style.display = ''
+      // Trik khusus Safari untuk memaksa render ulang
+      if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
+        const content = footer.querySelector('.footer-content')
+        if (content) {
+          content.style.opacity = '0.99'
+          setTimeout(() => {
+            content.style.opacity = '1'
+          }, 10)
+        }
+      }
     }
-  }
 
-  // Mulai dengan interval
-  const interval = setInterval(toggleColorMode, 2500)
+    // Interval dengan callback terpisah
+    let isLight = false
+    const colorToggle = () => {
+      isLight = !isLight
+      if (isLight) {
+        footer.classList.add('light-mode')
+      } else {
+        footer.classList.remove('light-mode')
+      }
+    }
 
-  // Juga panggil sekali di awal untuk memastikan
-  setTimeout(toggleColorMode, 100)
+    const interval = setInterval(colorToggle, 3000) // 6 detik
 
-  onBeforeUnmount(() => {
-    clearInterval(interval)
-  })
+    // Jalankan sekali di awal
+    setTimeout(colorToggle, 100)
+
+    onBeforeUnmount(() => {
+      clearInterval(interval)
+    })
+  }, 300)
 });
 
 onBeforeUnmount(() => {
@@ -781,12 +796,6 @@ body::before {
   --border-color: #000000;
 }
 
-/* Terapkan variabel CSS */
-#footer {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border-color: var(--border-color);
-}
 
 /* Marquee tetap konsisten */
 .marquee-container {
@@ -822,16 +831,49 @@ _::-webkit-full-page-media, _:future, :root .safari-only {
   /* Hacks khusus Safari */
 }
 
-@media not all and (min-resolution:.001dpcm) {
-  @supports (-webkit-appearance:none) and (stroke-color:transparent) {
-    #footer.light-mode {
-      -webkit-text-fill-color: #000000;
-      color: #000000;
+
+/* Sistem Warna dengan Variabel CSS */
+:root {
+  --footer-dark-bg: #171717;
+  --footer-light-bg: #ffffff;
+  --footer-dark-text: #ffffff;
+  --footer-light-text: #000000;
+}
+
+/* Mode Default (Dark) */
+#footer {
+  background-color: var(--footer-dark-bg);
+  color: var(--footer-dark-text);
+  border-color: black;
+  transition: background-color 1s ease, color 1s ease;
+}
+
+/* Mode Light */
+#footer.light-mode {
+  background-color: var(--footer-light-bg);
+  color: var(--footer-light-text);
+}
+
+/* Perbaikan Khusus Safari */
+@media not all and (min-resolution: .001dpcm) {
+  @supports (-webkit-appearance:none) {
+    #footer {
+      -webkit-transition: -webkit-text-fill-color 1s ease, background-color 1s ease;
     }
+
+    #footer.light-mode {
+      -webkit-text-fill-color: var(--footer-light-text);
+    }
+
     #footer:not(.light-mode) {
-      -webkit-text-fill-color: #ffffff;
-      color: #ffffff;
+      -webkit-text-fill-color: var(--footer-dark-text);
     }
   }
+}
+
+/* Marquee Tetap Statis */
+.marquee-fixed {
+  background-color: black !important;
+  color: white !important;
 }
 </style>
