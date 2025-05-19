@@ -744,9 +744,17 @@ body::before {
   border-color: black !important;
 }
 
-/* Marquee tetap hitam dengan teks putih */
 .light-mode .marquee-container {
   background-color: black !important;
   color: white !important;
+}
+
+@media not all and (min-resolution: .001dpcm) {
+  @supports (-webkit-appearance:none) {
+    /* CSS khusus Safari */
+    .light-mode {
+      -webkit-text-fill-color: black;
+    }
+  }
 }
 </style>
