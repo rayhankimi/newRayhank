@@ -390,9 +390,9 @@
 
     <!-- Section 5 - Mega Footer -->
     <section id="footer"
-             class="min-h-[80vh] border-t-4 border-black bg-neutral-900 text-white relative overflow-hidden">
+             class="min-h-[80vh] border-t-4 border-black bg-neutral-900 text-white relative overflow-hidden transition-colors duration-1000">
       <!-- Giant Marquee Banner -->
-      <div class="h-24 bg-black text-white flex items-center overflow-hidden">
+      <div class="h-24 bg-black text-white flex items-center overflow-hidden transition-colors duration-1000">
         <div class="flex items-center animate-marquee whitespace-nowrap">
           <span class="text-5xl md:text-7xl font-bold mx-8">RAYHAN KIMI NABIEL ATHALLAH</span>
           <span class="text-5xl md:text-7xl font-bold mx-8">•</span>
@@ -405,55 +405,59 @@
       </div>
 
       <!-- Giant Footer Content -->
-      <div class="p-12 md:p-24 flex flex-col h-full">
+      <div class="p-12 md:p-24 flex flex-col h-full transition-colors duration-1000">
         <div class="flex-grow flex flex-col md:flex-row gap-12">
           <!-- Left Column - Giant Name -->
           <div class="md:w-1/2 flex items-center justify-center">
-            <h2 class="text-8xl md:text-[10rem] lg:text-[12rem] xl:text-[14rem] font-bold leading-none text-center md:text-left">
+            <h2 class="text-6xl md:text-[7rem] lg:text-[9rem] xl:text-[12rem] font-bold leading-none text-center md:text-left transition-colors duration-1000">
               RAYHAN<br>KIMI
             </h2>
           </div>
 
           <!-- Right Column - Info -->
           <div class="md:w-1/2 flex flex-col justify-center space-y-8">
-            <div class="border-4 border-emerald-50 p-6 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
-              <h3 class="text-3xl font-bold mb-4">Connect</h3>
+            <div
+                class="border-4 border-emerald-50 p-6 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-colors duration-1000">
+              <h3 class="text-3xl font-bold mb-4 transition-colors duration-1000">Connect</h3>
               <div class="flex flex-row space-x-6">
                 <div class="space-y-4">
                   <a href="https://www.instagram.com/rayhankimi/" target="_blank"
-                     class="text-xl flex items-center gap-4 hover:underline">
+                     class="text-xl flex items-center gap-4 hover:underline transition-colors duration-1000">
                     Instagram
                   </a>
                   <a href="https://www.linkedin.com/in/rayhan-kimi-nabiel-athallah-897721245/" target="_blank"
-                     class="text-xl flex items-center gap-4 hover:underline">
+                     class="text-xl flex items-center gap-4 hover:underline transition-colors duration-1000">
                     LinkedIn
                   </a>
                   <a href="https://github.com/rayhankimi" target="_blank"
-                     class="text-xl flex items-center gap-4 hover:underline">
+                     class="text-xl flex items-center gap-4 hover:underline transition-colors duration-1000">
                     GitHub
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="border-4 border-emerald-50 p-6 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
-              <h3 class="text-3xl font-bold mb-4">Navigation</h3>
+            <div
+                class="border-4 border-emerald-50 p-6 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-colors duration-1000">
+              <h3 class="text-3xl font-bold mb-4 transition-colors duration-1000">Navigation</h3>
               <div class="grid grid-cols-2 gap-4">
-                <a href="#section1" class="text-lg hover:underline">About Me</a>
-                <a href="#section2" class="text-lg hover:underline">Skills</a>
-                <a href="#section3" class="text-lg hover:underline">Projects</a>
-                <a href="#section4" class="text-lg hover:underline">Contact</a>
+                <a href="#section1" class="text-lg hover:underline transition-colors duration-1000">About Me</a>
+                <a href="#section2" class="text-lg hover:underline transition-colors duration-1000">Skills</a>
+                <a href="#section3" class="text-lg hover:underline transition-colors duration-1000">Projects</a>
+                <a href="#section4" class="text-lg hover:underline transition-colors duration-1000">Contact</a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Bottom Copyright -->
-        <div class="mt-12 pt-6 border-t-4 border-white text-center">
-          <p class="text-xl">© 2025 Rayhan Kimi Nabiel Athallah. All systems operational.</p>
+        <div class="mt-12 pt-6 border-t-4 border-white text-center transition-colors duration-1000">
+          <p class="text-xl transition-colors duration-1000">© 2025 Rayhan Kimi Nabiel Athallah. All systems
+            operational.</p>
         </div>
       </div>
     </section>
+
   </div>
 </template>
 
@@ -525,6 +529,33 @@ const handleKeydown = (e) => {
 onMounted(() => {
   document.addEventListener('click', handleOutsideClick);
   document.addEventListener('keydown', handleKeydown);
+  const footerSection = document.getElementById('footer')
+
+  if (!footerSection) return
+
+  function toggleColorMode() {
+    footerSection.classList.toggle('dark-mode')
+
+    // Toggle marquee banner colors
+    const marqueeBanner = footerSection.querySelector('.h-24')
+    if (marqueeBanner) {
+      if (footerSection.classList.contains('dark-mode')) {
+        marqueeBanner.classList.remove('bg-black', 'text-white')
+        marqueeBanner.classList.add('bg-white', 'text-black')
+      } else {
+        marqueeBanner.classList.add('bg-black', 'text-white')
+        marqueeBanner.classList.remove('bg-white', 'text-black')
+      }
+    }
+  }
+
+  // Change colors every 6 seconds
+  const interval = setInterval(toggleColorMode, 3000)
+
+  // Cleanup interval when component is unmounted
+  onBeforeUnmount(() => {
+    clearInterval(interval)
+  })
 });
 
 onBeforeUnmount(() => {
@@ -545,6 +576,7 @@ function handleSubmit() {
   )}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`
   window.location.href = mailto
 }
+
 </script>
 
 <style>
@@ -560,11 +592,11 @@ body::before {
   height: 200%;
   background: linear-gradient(
       15deg,
-      #cfffec 0%,
-      #bcfff1 25%,
-      #abf0fc 50%,
-      #bbfcc6 75%,
-      #dcffdc 100%
+      #ffffff 0%,
+      #9bffe9 25%,
+      #9decfa 50%,
+      #a7fcb6 75%,
+      #a7f8a7 100%
   );
   background-size: 400% 400%;
   animation: gradientFlow 5s ease infinite;
@@ -590,7 +622,7 @@ body::before {
   background-size: 50px 50px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.15) 1px, transparent 1px),
   linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
-  animation: gridAnimation1 6s infinite linear;
+  animation: gridAnimation1 6s infinite ease-in-out;
 }
 
 @keyframes gridAnimation1 {
@@ -598,7 +630,12 @@ body::before {
     background-size: 50px 50px;
   }
   50% {
-    background-size: 100px 100px;
+    background-size: 200px 20px;
+    background-color: white;
+  }
+
+  75% {
+    background-size: 20px 200px;
   }
 
   100% {
@@ -611,7 +648,7 @@ body::before {
   background-size: 15px 15px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.25) 1px, transparent 1px),
   linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 1px, transparent 1px);
-  animation: gridAnimation 12s infinite ease-in-out;
+  animation: gridAnimation 6s infinite ease-in-out;
 }
 
 @keyframes gridAnimation {
@@ -620,12 +657,14 @@ body::before {
   }
   20% {
     background-size: 15px 30px;
+    background-color: darkslategray;
   }
   40% {
     background-size: 40px 20px;
   }
   60% {
     background-size: 20px 40px;
+    background-color: #19332e;;
   }
   80% {
     background-size: 50px 50px;
@@ -636,27 +675,19 @@ body::before {
 }
 
 .line-pattern {
-  background-color: #dff5f3;
+  background-color: #c6ece8;
   background-size: 50px 50px;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
-  animation: lineAnimation 12s infinite ease-in-out;
+  animation: lineAnimation 3s infinite ease-in-out;
 }
 
 @keyframes lineAnimation {
   0% {
     background-size: 50px 50px;
   }
-  20% {
-    background-size: 30px 30px;
-  }
-  40% {
-    background-size: 70px 70px;
-  }
-  60% {
-    background-size: 40px 40px;
-  }
-  80% {
-    background-size: 60px 60px;
+  50% {
+    background-size: 20px 20px;
+    background-color: whitesmoke;
   }
   100% {
     background-size: 50px 50px;
@@ -667,7 +698,7 @@ body::before {
   background-color: #dff5e5;
   background-size: 50px 50px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
-  animation: verticalAnimation 12s infinite ease-in-out;
+  animation: verticalAnimation 6s infinite ease-in-out;
 }
 
 @keyframes verticalAnimation {
@@ -676,6 +707,7 @@ body::before {
   }
   20% {
     background-size: 30px 30px;
+    background-color: antiquewhite;
   }
   40% {
     background-size: 70px 70px;
@@ -697,4 +729,21 @@ body::before {
   }
 }
 
+.dark-mode {
+  background-color: white;
+  color: black;
+  border-color: black !important;
+}
+
+.dark-mode .border-emerald-50 {
+  border-color: black !important;
+}
+
+.dark-mode .shadow-\[4px_4px_0px_0px_rgba\(255\,255\,255\,1\)\] {
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1) !important;
+}
+
+.dark-mode .border-white {
+  border-color: black !important;
+}
 </style>
