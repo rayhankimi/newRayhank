@@ -534,23 +534,13 @@ onMounted(() => {
   if (!footerSection) return
 
   function toggleColorMode() {
-    footerSection.classList.toggle('dark-mode')
+    footerSection.classList.toggle('light-mode')
 
-    // Toggle marquee banner colors
-    const marqueeBanner = footerSection.querySelector('.h-24')
-    if (marqueeBanner) {
-      if (footerSection.classList.contains('dark-mode')) {
-        marqueeBanner.classList.remove('bg-black', 'text-white')
-        marqueeBanner.classList.add('bg-white', 'text-black')
-      } else {
-        marqueeBanner.classList.add('bg-black', 'text-white')
-        marqueeBanner.classList.remove('bg-white', 'text-black')
-      }
-    }
+    // Marquee tidak perlu diubah karena sudah dihandle oleh CSS
   }
 
   // Change colors every 6 seconds
-  const interval = setInterval(toggleColorMode, 3000)
+  const interval = setInterval(toggleColorMode, 2500)
 
   // Cleanup interval when component is unmounted
   onBeforeUnmount(() => {
@@ -729,21 +719,34 @@ body::before {
   }
 }
 
-.dark-mode {
-  background-color: white;
-  color: black;
+/* Mode terang - background putih dengan teks hitam */
+.light-mode {
+  background-color: white !important;
+  color: black !important;
   border-color: black !important;
 }
 
-.dark-mode .border-emerald-50 {
+/* Warna teks yang tetap kontras */
+.light-mode .text-contrast {
+  color: black !important;
+}
+
+/* Border dan shadow untuk mode terang */
+.light-mode .border-emerald-50 {
   border-color: black !important;
 }
 
-.dark-mode .shadow-\[4px_4px_0px_0px_rgba\(255\,255\,255\,1\)\] {
+.light-mode .shadow-\[4px_4px_0px_0px_rgba\(255\,255\,255\,1\)\] {
   box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1) !important;
 }
 
-.dark-mode .border-white {
+.light-mode .border-white {
   border-color: black !important;
+}
+
+/* Marquee tetap hitam dengan teks putih */
+.light-mode .marquee-container {
+  background-color: black !important;
+  color: white !important;
 }
 </style>
