@@ -39,20 +39,19 @@
               </button>
             </div>
             <div class="flex border-2 border-black rounded overflow-hidden">
-              <a href="#section1" class="px-4 py-2 text-black font-medium hover:text-emerald-50 transition-colors border-r-2 border-black last:border-r-0">
+              <a href="#section1" @click.prevent="scrollToSection('section1')" class="px-4 py-2 text-black font-medium hover:text-emerald-50 transition-colors border-r-2 border-black last:border-r-0">
                 About Me
               </a>
-              <a href="#section2" class="px-4 py-2 text-black font-medium hover:text-emerald-50 transition-colors border-r-2 border-black last:border-r-0">
+              <a href="#section2" @click.prevent="scrollToSection('section2')" class="px-4 py-2 text-black font-medium hover:text-emerald-50 transition-colors border-r-2 border-black last:border-r-0">
                 Skills
               </a>
-              <a href="#section3" class="px-4 py-2 text-black font-medium hover:text-emerald-50 transition-colors border-r-2 border-black last:border-r-0">
+              <a href="#section3" @click.prevent="scrollToSection('section3')" class="px-4 py-2 text-black font-medium hover:text-emerald-50 transition-colors border-r-2 border-black last:border-r-0">
                 Projects
               </a>
-              <a href="#section4" class="px-4 py-2 text-black font-medium hover:text-emerald-50 transition-colors">
+              <a href="#section4" @click.prevent="scrollToSection('section4')" class="px-4 py-2 text-black font-medium hover:text-emerald-50 transition-colors">
                 Contact Me
               </a>
             </div>
-
           </div>
 
           <!-- Mobile buttons -->
@@ -89,58 +88,116 @@
 </template>
 
 <script setup>
-import {ref, onMounted} from 'vue'
+import { ref, onMounted } from 'vue'
 
 const currentSection = ref(0)
 const sections = ref([])
+let sectionObserver = null
 
-onMounted(() => {
-  sections.value = [
-    document.getElementById('hero'),
-    ...Array.from(document.querySelectorAll('[id^="section"]')).sort((a, b) => a.offsetTop - b.offsetTop),
-    document.getElementById('footer')
-  ]
+// Inisialisasi section ids dalam array terpisah untuk memudahkan referensi
+const sectionIds = ['hero', 'section1', 'section2', 'section3', 'section4', 'footer']
 
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id
-        const index = sections.value.findIndex(el => el?.id === id)
-        if (index !== -1) {
-          currentSection.value = index
-        }
+// Fungsi untuk mendapatkan semua section dengan timeout untuk memastikan DOM sudah ter-render
+const initializeSections = () => {
+  // Membuat timeout untuk memastikan DOM sudah dirender sepenuhnya
+  setTimeout(() => {
+    // Kumpulkan section berdasarkan ID yang sudah ditentukan
+    sections.value = sectionIds.map(id => document.getElementById(id)).filter(Boolean)
+
+    // Inisialisasi IntersectionObserver hanya jika sections berhasil ditemukan
+    if (sections.value.length > 0) {
+      // Bersihkan observer lama jika ada
+      if (sectionObserver) {
+        sectionObserver.disconnect()
       }
-    })
-  }, {
-    threshold: 0.5,
-    rootMargin: '-50px 0px -50px 0px'
-  })
 
-  sections.value.forEach(section => {
-    if (section) sectionObserver.observe(section)
-  })
-})
+      // Buat observer baru
+      sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id
+            const index = sections.value.findIndex(el => el.id === id)
+            if (index !== -1) {
+              currentSection.value = index
+            }
+          }
+        })
+      }, {
+        threshold: 0.3, // Menurunkan threshold untuk trigger lebih awal
+        rootMargin: '-20% 0px -20% 0px' // Margin yang lebih ramah di Safari
+      })
 
-const scrollToTop = () => {
-  document.getElementById('hero')?.scrollIntoView({behavior: 'smooth'})
+      // Observe semua section
+      sections.value.forEach(section => {
+        if (section) sectionObserver.observe(section)
+      })
+    }
+  }, 500) // Delay untuk memastikan DOM sudah terrender
 }
 
+onMounted(() => {
+  // Inisialisasi sections dengan delay untuk memastikan DOM dirender
+  initializeSections()
+
+  // Tambahkan event listener untuk memastikan scroll tetap berfungsi
+  window.addEventListener('resize', initializeSections)
+
+  // Cleanup saat component dihapus
+  return () => {
+    if (sectionObserver) {
+      sectionObserver.disconnect()
+    }
+    window.removeEventListener('resize', initializeSections)
+  }
+})
+
+// Scroll ke top dengan smooth behavior
+const scrollToTop = () => {
+  const heroElement = document.getElementById('hero')
+  if (heroElement) {
+    // Gunakan scrollTo untuk Safari compatibility
+    window.scrollTo({
+      top: heroElement.offsetTop,
+      behavior: 'smooth'
+    })
+  }
+}
+
+// Scroll ke section spesifik dengan ID
+const scrollToSection = (sectionId) => {
+  const targetElement = document.getElementById(sectionId)
+  if (targetElement) {
+    // Gunakan scrollTo untuk Safari compatibility
+    window.scrollTo({
+      top: targetElement.offsetTop,
+      behavior: 'smooth'
+    })
+
+    // Update current section untuk navigasi
+    const index = sections.value.findIndex(section => section.id === sectionId)
+    if (index !== -1) {
+      currentSection.value = index
+    }
+  }
+}
+
+// Navigasi section atas/bawah
 const navigateSection = (direction) => {
+  let targetIndex = currentSection.value
+
   if (direction === 'up') {
-    if (currentSection.value <= 0) {
-      scrollToTop()
-      return
-    }
-    const target = sections.value[currentSection.value - 1]
-    target?.scrollIntoView({behavior: 'smooth'})
+    targetIndex = Math.max(0, currentSection.value - 1)
   } else if (direction === 'down') {
-    const nextIndex = currentSection.value + 1
-    if (nextIndex >= sections.value.length) {
-      scrollToTop()
-    } else {
-      const target = sections.value[nextIndex]
-      target?.scrollIntoView({behavior: 'smooth'})
-    }
+    targetIndex = Math.min(sections.value.length - 1, currentSection.value + 1)
+  }
+
+  // Jika target ditemukan, scroll ke target
+  if (sections.value[targetIndex]) {
+    // Gunakan scrollTo untuk Safari compatibility
+    window.scrollTo({
+      top: sections.value[targetIndex].offsetTop,
+      behavior: 'smooth'
+    })
   }
 }
 </script>
