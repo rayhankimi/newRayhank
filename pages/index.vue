@@ -409,7 +409,7 @@
         <div class="flex-grow flex flex-col md:flex-row gap-12">
           <!-- Left Column - Giant Name -->
           <div class="md:w-1/2 flex items-center justify-center">
-            <h2 class="text-6xl md:text-[7rem] lg:text-[9rem] xl:text-[12rem] font-bold leading-none text-center md:text-left transition-colors duration-1000">
+            <h2 class="text-9xl md:text-[7rem] lg:text-[9rem] xl:text-[12rem] font-bold leading-none text-center md:text-left transition-colors duration-1000">
               RAYHAN<br>KIMI
             </h2>
           </div>
@@ -530,19 +530,27 @@ onMounted(() => {
   document.addEventListener('click', handleOutsideClick);
   document.addEventListener('keydown', handleKeydown);
   const footerSection = document.getElementById('footer')
-
   if (!footerSection) return
 
-  function toggleColorMode() {
+  // Fungsi toggle yang lebih reliable
+  const toggleColorMode = () => {
     footerSection.classList.toggle('light-mode')
 
-    // Marquee tidak perlu diubah karena sudah dihandle oleh CSS
+    // Force repaint untuk Safari
+    const content = footerSection.querySelector('.footer-content')
+    if (content) {
+      content.style.display = 'none'
+      content.offsetHeight // Trigger reflow
+      content.style.display = ''
+    }
   }
 
-  // Change colors every 6 seconds
+  // Mulai dengan interval
   const interval = setInterval(toggleColorMode, 2500)
 
-  // Cleanup interval when component is unmounted
+  // Juga panggil sekali di awal untuk memastikan
+  setTimeout(toggleColorMode, 100)
+
   onBeforeUnmount(() => {
     clearInterval(interval)
   })
@@ -754,6 +762,75 @@ body::before {
     /* CSS khusus Safari */
     .light-mode {
       -webkit-text-fill-color: black;
+    }
+  }
+}
+
+/* Base Styles */
+#footer {
+  --bg-color: #171717; /* neutral-900 */
+  --text-color: #ffffff;
+  --border-color: #000000;
+  transition: all 1s ease;
+}
+
+/* Light Mode Variables */
+#footer.light-mode {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #000000;
+}
+
+/* Terapkan variabel CSS */
+#footer {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+/* Marquee tetap konsisten */
+.marquee-container {
+  background-color: black !important;
+  color: white !important;
+}
+
+/* Konten footer */
+.footer-content {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Teks khusus */
+.name-text,
+.footer-content a,
+.footer-content p,
+.footer-content h3 {
+  color: var(--text-color) !important;
+}
+
+/* Border dan shadow */
+.footer-content .border-emerald-50 {
+  border-color: var(--text-color) !important;
+}
+
+.footer-content .shadow-\[4px_4px_0px_0px_rgba\(255\,255\,255\,1\)\] {
+  box-shadow: 4px 4px 0px 0px var(--text-color) !important;
+}
+
+/* Safari Specific Fixes */
+_::-webkit-full-page-media, _:future, :root .safari-only {
+  /* Hacks khusus Safari */
+}
+
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+    #footer.light-mode {
+      -webkit-text-fill-color: #000000;
+      color: #000000;
+    }
+    #footer:not(.light-mode) {
+      -webkit-text-fill-color: #ffffff;
+      color: #ffffff;
     }
   }
 }
