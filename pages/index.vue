@@ -103,7 +103,7 @@
           </div>
         </div>
       </div>
-      <Marquee text="Rayhan Kimi - About Me" class="w-full"/>
+      <Marquee text="Rayhan Kimi Nabiel Athallah" class="w-full"/>
     </section>
 
     <section id="section2" class="min-h-screen border-t-4 border-black line-pattern flex flex-col">
@@ -204,7 +204,7 @@
       </div>
 
       <!-- Marquee positioned at the bottom -->
-      <Marquee text="Rayhan Kimi - Skills & Tech" class="w-full"/>
+      <Marquee text="Tools to Build Something Cool" class="w-full"/>
     </section>
 
     <!-- Section 3 - Projects -->
@@ -270,7 +270,7 @@
       </div>
 
       <!-- Marquee positioned at the bottom -->
-      <Marquee text="Innovation Through Technology" class="w-full"/>
+      <Marquee text="Leaded by Curiosity, Fear No Mistakes" class="w-full"/>
 
       <!-- Modal Component -->
       <div v-if="activeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -295,7 +295,7 @@
     </section>
 
     <template>
-      <section id="section4" class="min-h-screen border-t-4 border-black flex flex-col">
+      <section id="section4" class="min-h-screen border-t-4 border-black flex flex-col small-grid-pattern">
         <div class="flex-grow px-4 py-12 md:px-48">
           <div
               class="mt-20 bg-white border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-md overflow-hidden"
@@ -335,7 +335,7 @@
                                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                         </svg>
                       </div>
-                      <span class="text-lg md:text-xl font-medium">+62 812-3456-7890</span>
+                      <span class="text-lg md:text-xl font-medium">(hidden)</span>
                     </div>
 
                     <div class="flex items-center gap-4">
@@ -349,7 +349,7 @@
                                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
                       </div>
-                      <span class="text-lg md:text-xl font-medium">Bandung, Indonesia</span>
+                      <span class="text-lg md:text-xl font-medium">Jimbaran, Badung, Indonesia</span>
                     </div>
                   </div>
                 </div>
@@ -384,7 +384,7 @@
           </div>
         </div>
 
-        <Marquee text="Let's Build Something Amazing Together!" class="w-full"/>
+        <Marquee text="Let's Connect and Elaborate Together!" class="w-full"/>
       </section>
     </template>
 
@@ -559,15 +559,15 @@ body::before {
   width: 200%;
   height: 200%;
   background: linear-gradient(
-      90deg,
-      #f5fcf9 0%,
-      #c5fdf1 25%,
-      #abfce8 50%,
-      #bbfcdc 75%,
-      #f5fcf9 100%
+      15deg,
+      #cfffec 0%,
+      #bcfff1 25%,
+      #abf0fc 50%,
+      #bbfcc6 75%,
+      #dcffdc 100%
   );
   background-size: 400% 400%;
-  animation: gradientFlow 15s ease infinite;
+  animation: gradientFlow 5s ease infinite;
   filter: blur(10px);
   z-index: -1;
   opacity: 0.8;
@@ -575,13 +575,13 @@ body::before {
 
 @keyframes gradientFlow {
   0% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
   50% {
     background-position: 100% 50%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
 }
 
@@ -590,18 +590,105 @@ body::before {
   background-size: 50px 50px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.15) 1px, transparent 1px),
   linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+  animation: gridAnimation1 6s infinite linear;
+}
+
+@keyframes gridAnimation1 {
+  0% {
+    background-size: 50px 50px;
+  }
+  50% {
+    background-size: 100px 100px;
+  }
+
+  100% {
+    background-size: 50px 50px;
+  }
+}
+
+.small-grid-pattern {
+  background-color: #1a6e58;
+  background-size: 15px 15px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.25) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 1px, transparent 1px);
+  animation: gridAnimation 12s infinite ease-in-out;
+}
+
+@keyframes gridAnimation {
+  0% {
+    background-size: 30px 15px;
+  }
+  20% {
+    background-size: 15px 30px;
+  }
+  40% {
+    background-size: 40px 20px;
+  }
+  60% {
+    background-size: 20px 40px;
+  }
+  80% {
+    background-size: 50px 50px;
+  }
+  100% {
+    background-size: 25px 25px;
+  }
 }
 
 .line-pattern {
   background-color: #dff5f3;
   background-size: 50px 50px;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+  animation: lineAnimation 12s infinite ease-in-out;
+}
+
+@keyframes lineAnimation {
+  0% {
+    background-size: 50px 50px;
+  }
+  20% {
+    background-size: 30px 30px;
+  }
+  40% {
+    background-size: 70px 70px;
+  }
+  60% {
+    background-size: 40px 40px;
+  }
+  80% {
+    background-size: 60px 60px;
+  }
+  100% {
+    background-size: 50px 50px;
+  }
 }
 
 .vertical-pattern {
   background-color: #dff5e5;
   background-size: 50px 50px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+  animation: verticalAnimation 12s infinite ease-in-out;
+}
+
+@keyframes verticalAnimation {
+  0% {
+    background-size: 50px 50px;
+  }
+  20% {
+    background-size: 30px 30px;
+  }
+  40% {
+    background-size: 70px 70px;
+  }
+  60% {
+    background-size: 40px 40px;
+  }
+  80% {
+    background-size: 60px 60px;
+  }
+  100% {
+    background-size: 50px 50px;
+  }
 }
 
 @supports (-webkit-touch-callout: none) {
