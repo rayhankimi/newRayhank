@@ -12,9 +12,9 @@
           <a
               href="/cv.pdf"
               target="_blank"
-          class="text-neutral-800 flex items-center text-xl justify-center h-12 w-auto p-4 bg-emerald-500 hover:bg-emerald-400 border-2 border-black rounded transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              class="text-neutral-800 flex items-center text-xl justify-center h-12 w-auto p-4 bg-emerald-500 hover:bg-emerald-400 border-2 border-black rounded transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           >
-          Download My CV
+            Download My CV
           </a>
 
           <a
@@ -145,7 +145,8 @@
                     </p>
                     <div class="mt-4 flex flex-wrap gap-2">
                       <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Go</span>
-                      <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Django REST</span>
+                      <span
+                          class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Django REST</span>
                       <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">FastAPI</span>
                       <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">MQTT</span>
                     </div>
@@ -168,7 +169,8 @@
                       <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Docker</span>
                       <span
                           class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">PostgreSQL</span>
-                      <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">AWS & GCP</span>
+                      <span
+                          class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">AWS & GCP</span>
                       <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Vue</span>
                     </div>
                   </div>
@@ -190,7 +192,8 @@
                       <span
                           class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Communication</span>
                       <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Agile</span>
-                      <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Easy Going</span>
+                      <span
+                          class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Easy Going</span>
                     </div>
                   </div>
                 </div>
@@ -218,17 +221,21 @@
               <div class="flex flex-col gap-6">
                 <div>
                   <p class="text-sm md:text-base mb-4">
-                    Integrated intelligent traffic light system that adapts to real-time traffic conditions using computer vision (using YoLoV5 model) and IoT technology.
+                    Integrated intelligent traffic light system that adapts to real-time traffic conditions using
+                    computer vision (using YoLoV5 model) and IoT technology.
                     Utilizing Raspberry Pi to perform computer vision program.
                   </p>
                   <div class="flex flex-wrap gap-2">
                     <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">YoLoV5</span>
                     <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">OpenCV</span>
-                    <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Django REST</span>
-                    <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Raspberry Pi</span>
+                    <span
+                        class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Django REST</span>
+                    <span
+                        class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">Raspberry Pi</span>
                   </div>
                 </div>
-                <button @click="openModal('traffic')" class="mt-4 px-4 py-2 bg-teal-700 text-white border-2 border-black rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-teal-800 transition-colors">
+                <button @click="openModal('traffic')"
+                        class="mt-4 px-4 py-2 bg-teal-700 text-white border-2 border-black rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-teal-800 transition-colors">
                   View Project Images
                 </button>
               </div>
@@ -242,7 +249,8 @@
               <div class="flex flex-col gap-6">
                 <div>
                   <p class="text-sm md:text-base mb-4">
-                    Research & Development member. Contributed in making API for whatsapp bot, creating hardware monitoring system,
+                    Research & Development member. Contributed in making API for whatsapp bot, creating hardware
+                    monitoring system,
                     and handling server hosting and marketing.
                   </p>
                   <div class="flex flex-wrap gap-2">
@@ -251,7 +259,8 @@
                     <span class="px-2 py-1 bg-black text-white text-xs md:text-sm border border-black">DevOps</span>
                   </div>
                 </div>
-                <button @click="openModal('suika')" class="mt-4 px-4 py-2 bg-teal-700 text-white border-2 border-black rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-teal-800 transition-colors">
+                <button @click="openModal('suika')"
+                        class="mt-4 px-4 py-2 bg-teal-700 text-white border-2 border-black rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-teal-800 transition-colors">
                   View Project Images
                 </button>
               </div>
@@ -277,91 +286,111 @@
                  :alt="'Project Image ' + (index + 1)"
                  class="w-full h-auto border-2 border-black">
           </div>
-          <button @click="closeModal" class="mt-4 px-4 py-2 bg-black text-white border-2 border-black rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-800 transition-colors">
+          <button @click="closeModal"
+                  class="mt-4 px-4 py-2 bg-black text-white border-2 border-black rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-800 transition-colors">
             Close
           </button>
         </div>
       </div>
     </section>
 
-    <!-- Section 4 - Contact -->
-    <section id="section4" class="min-h-screen border-t-4 border-black flex flex-col">
-      <div class="flex-grow px-4 py-12 md:px-48">
-        <div class="mt-20 bg-white border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-md overflow-hidden">
-          <div class="p-6 md:p-8">
-            <h2 class="text-3xl md:text-5xl font-bold mb-6 text-center">Get In Touch</h2>
+    <template>
+      <section id="section4" class="min-h-screen border-t-4 border-black flex flex-col">
+        <div class="flex-grow px-4 py-12 md:px-48">
+          <div
+              class="mt-20 bg-white border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-md overflow-hidden"
+          >
+            <div class="p-6 md:p-8">
+              <h2 class="text-3xl md:text-5xl font-bold mb-6 text-center">Get In Touch</h2>
 
-            <!-- Contact Card -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 class="text-2xl font-semibold md:text-3xl mb-4">Contact Me</h3>
-                <p class="text-sm md:text-base mb-6">
-                  Interested in collaborating or have questions about my work?
-                  Feel free to reach out through email or connect with me on social media.
-                </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Contact Info -->
+                <div>
+                  <h3 class="text-2xl font-semibold md:text-3xl mb-4">Contact Me</h3>
+                  <p class="text-sm md:text-base mb-6">
+                    Interested in collaborating or have questions about my work?
+                    Feel free to reach out through email or connect with me on social media.
+                  </p>
 
-                <div class="space-y-4">
-                  <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-teal-700 flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                      <div class="w-10 h-10 bg-teal-700 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                      </div>
+                      <a href="mailto:r4yhankimi@gmail.com"
+                         class="text-lg md:text-xl font-medium hover:underline">r4yhankimi@gmail.com</a>
                     </div>
-                    <a href="mailto:r4yhankimi@gmail.com" class="text-lg md:text-xl font-medium hover:underline">r4yhankimi@gmail.com</a>
-                  </div>
 
-                  <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-teal-700 flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
+                    <div class="flex items-center gap-4">
+                      <div class="w-10 h-10 bg-teal-700 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                      </div>
+                      <span class="text-lg md:text-xl font-medium">+62 812-3456-7890</span>
                     </div>
-                    <span class="text-lg md:text-xl font-medium">+62 812-3456-7890</span>
-                  </div>
 
-                  <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-teal-700 flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
+                    <div class="flex items-center gap-4">
+                      <div class="w-10 h-10 bg-teal-700 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                      </div>
+                      <span class="text-lg md:text-xl font-medium">Bandung, Indonesia</span>
                     </div>
-                    <span class="text-lg md:text-xl font-medium">Bandung, Indonesia</span>
                   </div>
                 </div>
-              </div>
 
-              <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-6 md:pt-0 md:pl-6">
-                <h3 class="text-2xl font-semibold md:text-3xl mb-4">Send a Message</h3>
-                <form class="space-y-4">
-                  <div>
-                    <label for="name" class="block text-sm font-medium mb-1">Name</label>
-                    <input type="text" id="name" class="w-full px-4 py-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-black">
-                  </div>
-                  <div>
-                    <label for="email" class="block text-sm font-medium mb-1">Email</label>
-                    <input type="email" id="email" class="w-full px-4 py-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-black">
-                  </div>
-                  <div>
-                    <label for="message" class="block text-sm font-medium mb-1">Message</label>
-                    <textarea id="message" rows="4" class="w-full px-4 py-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-black"></textarea>
-                  </div>
-                  <button type="submit" class="px-6 py-3 bg-teal-700 text-white font-bold border-2 border-black rounded-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-teal-800 transition-colors">
-                    Send Message
-                  </button>
-                </form>
+                <!-- Contact Form -->
+                <div class="border-t-2 md:border-t-0 md:border-l-2 border-black pt-6 md:pt-0 md:pl-6">
+                  <h3 class="text-2xl font-semibold md:text-3xl mb-4">Send a Message</h3>
+                  <form class="space-y-4" @submit.prevent="handleSubmit">
+                    <div>
+                      <label for="name" class="block text-sm font-medium mb-1">Name</label>
+                      <input v-model="form.name" type="text" id="name"
+                             class="w-full px-4 py-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-black">
+                    </div>
+                    <div>
+                      <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                      <input v-model="form.email" type="email" id="email"
+                             class="w-full px-4 py-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-black">
+                    </div>
+                    <div>
+                      <label for="message" class="block text-sm font-medium mb-1">Message</label>
+                      <textarea v-model="form.message" id="message" rows="4"
+                                class="w-full px-4 py-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-black"></textarea>
+                    </div>
+                    <button type="submit"
+                            class="px-6 py-3 bg-teal-700 text-white font-bold border-2 border-black rounded-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-teal-800 transition-colors">
+                      Send Message
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Marquee positioned at the bottom -->
-      <Marquee text="Let's Build Something Amazing Together!" class="w-full"/>
-    </section>
+        <Marquee text="Let's Build Something Amazing Together!" class="w-full"/>
+      </section>
+    </template>
 
     <!-- Section 5 - Mega Footer -->
-    <section id="footer" class="min-h-[80vh] border-t-4 border-black bg-neutral-900 text-white relative overflow-hidden">
+    <section id="footer"
+             class="min-h-[80vh] border-t-4 border-black bg-neutral-900 text-white relative overflow-hidden">
       <!-- Giant Marquee Banner -->
       <div class="h-24 bg-black text-white flex items-center overflow-hidden">
         <div class="flex items-center animate-marquee whitespace-nowrap">
@@ -389,26 +418,34 @@
           <div class="md:w-1/2 flex flex-col justify-center space-y-8">
             <div class="border-4 border-emerald-50 p-6 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
               <h3 class="text-3xl font-bold mb-4">Connect</h3>
-              <div class="space-y-4">
-                <a href="mailto:r4yhankimi@gmail.com" class="text-xl flex items-center gap-4 hover:underline">
-              <span class="w-10 h-10 bg-emerald-50 flex items-center justify-center">
-                ✉️
-              </span>
-                  r4yhankimi@gmail.com
-                </a>
-                <a href="#" class="text-xl flex items-center gap-4 hover:underline">
-              <span class="w-10 h-10 bg-emerald-50 flex items-center justify-center">
-                💼
-              </span>
-                  LinkedIn
-                </a>
-                <a href="#" class="text-xl flex items-center gap-4 hover:underline">
-              <span class="w-10 h-10 bg-emerald-50 flex items-center justify-center">
-                ⌨️
-              </span>
-                  GitHub
-                </a>
+              <div class="flex flex-row space-x-6">
+                <div class="space-y-4">
+                  <a href="https://www.instagram.com/rayhankimi/" target="_blank"
+                     class="text-xl flex items-center gap-4 hover:underline">
+                    Instagram
+                  </a>
+                  <a href="https://www.linkedin.com/in/rayhan-kimi-nabiel-athallah-897721245/" target="_blank"
+                     class="text-xl flex items-center gap-4 hover:underline">
+                    LinkedIn
+                  </a>
+                  <a href="https://github.com/rayhankimi" target="_blank"
+                     class="text-xl flex items-center gap-4 hover:underline">
+                    GitHub
+                  </a>
+                </div>
+                <div class="space-y-4">
+                  <a href="mailto:r4yhankimi@gmail.com" class="text-xl flex items-center gap-4 hover:underline">
+                    r4yhankimi@gmail.com
+                  </a>
+                  <a href="#" class="text-xl flex items-center gap-4 hover:underline">
+                    LinkedIn
+                  </a>
+                  <a href="#" class="text-xl flex items-center gap-4 hover:underline">
+                    GitHub
+                  </a>
+                </div>
               </div>
+
             </div>
 
             <div class="border-4 border-emerald-50 p-6 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
@@ -425,7 +462,7 @@
 
         <!-- Bottom Copyright -->
         <div class="mt-12 pt-6 border-t-4 border-white text-center">
-          <p class="text-xl">© 2023 Rayhan Kimi Nabiel Athallah. All systems operational.</p>
+          <p class="text-xl">© 2025 Rayhan Kimi Nabiel Athallah. All systems operational.</p>
         </div>
       </div>
     </section>
@@ -434,7 +471,8 @@
 
 <script setup>
 
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import {ref, onMounted, onBeforeUnmount} from 'vue';
+import {reactive} from 'vue'
 
 const currentImageIndex = ref(0)
 const images = ref([
@@ -469,7 +507,7 @@ const modalImages = {
     'https://placehold.co/600x400.png',
     'https://placehold.co/600x400.png',
     'https://placehold.co/600x400.png',
-     ]
+  ]
 };
 
 const openModal = (modalType) => {
@@ -506,6 +544,19 @@ onBeforeUnmount(() => {
   document.removeEventListener('keydown', handleKeydown);
 });
 
+const form = reactive({
+  name: '',
+  email: '',
+  message: '',
+})
+
+function handleSubmit() {
+  const {name, email, message} = form
+  const mailto = `mailto:r4yhankimi@gmail.com?subject=Contact from ${encodeURIComponent(
+      name
+  )}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`
+  window.location.href = mailto
+}
 </script>
 
 <style>
@@ -558,9 +609,17 @@ body::before {
   background-size: 50px 50px;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
 }
+
 .vertical-pattern {
   background-color: #dff5e5;
   background-size: 50px 50px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
 }
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 </style>
