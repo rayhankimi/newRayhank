@@ -433,19 +433,7 @@
                     GitHub
                   </a>
                 </div>
-                <div class="space-y-4">
-                  <a href="mailto:r4yhankimi@gmail.com" class="text-xl flex items-center gap-4 hover:underline">
-                    r4yhankimi@gmail.com
-                  </a>
-                  <a href="#" class="text-xl flex items-center gap-4 hover:underline">
-                    LinkedIn
-                  </a>
-                  <a href="#" class="text-xl flex items-center gap-4 hover:underline">
-                    GitHub
-                  </a>
-                </div>
               </div>
-
             </div>
 
             <div class="border-4 border-emerald-50 p-6 shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
