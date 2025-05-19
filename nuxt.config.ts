@@ -11,12 +11,12 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Rayhan Kimi',
+      title: 'Rayhan Kimi Nabiel Athallah - rayhank.com',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Rayhan Kimi personal website' },
-        { name: 'keywords', content: 'rayhankimi, rayhank.com, rayhan kimi nabiel athallah, rayhan kimi, rayhan kimi portfolio, rayhan kimi personal website' },
+        { name: 'description', content: 'Rayhan Kimi Nabiel Athallah' },
+        { name: 'keywords', content: 'rayhan kimi, rayhank.com, rayhan kimi nabiel athallah, rayhankimi, rayhan kimi portfolio, kimi, rayhan kimi personal website' },
         { name: 'author', content: 'Rayhan Kimi' },
         { name: 'robots', content: 'index, follow' },
         { name: 'theme-color', content: '#b6ead6' },
@@ -24,7 +24,7 @@ export default defineNuxtConfig({
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://rayhank.com' },
         { property: 'og:image', content: '/images/og-image.png' },
-        { property: 'og:description', content: 'Rayhan Kimi personal website' },
+        { property: 'og:description', content: 'Rayhan Kimi personal website. Hello! Feel free to check out my personal website/portfolio!' },
         { property: 'og:site_name', content: 'Rayhan Kimi' }
 
       ],
