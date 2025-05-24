@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Rayhan Kimi Nabiel Athallah - rayhank.com',
+      title: 'Rayhan Kimi - rayhank.com',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },

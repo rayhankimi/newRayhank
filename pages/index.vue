@@ -871,7 +871,6 @@ _::-webkit-full-page-media, _:future, :root .safari-only {
   }
 }
 
-/* Marquee Tetap Statis */
 .marquee-fixed {
   background-color: black !important;
   color: white !important;
